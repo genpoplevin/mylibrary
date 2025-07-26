@@ -51,6 +51,14 @@ pip install -r requirements.txt
 ```bash
 python manage.py migrate
 ```
+5. Создайте администратора:
+```bash
+python manage.py createsuperuser
+Username: admin
+Email address: admin@admin.com
+Password: придумайте пароль
+Password (again): введите пароль снова
+```
 5. Запустите сервер:
 ```bash
 python manage.py runserver
