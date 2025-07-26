@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Войти{% endblock %}
+
+{% block content %}
+  <h1>Log-in</h1>
+  {% if form.errors %}
+    <p>
+      Ваши логин и пароль не совпали.
+      Пожалуйста, попробуйте еще раз.
+    </p>
+  {% else %}
+    <p>
+      Пожалуйста, используйте следующую форму, чтобы войти.
+      Если у вас нет учетной записи, <a href="{% url "account:register" %}">зарегистрируйтесь</a>.
+    </p>
+  {% endif %}
+  <div class="login-form">
+    <form action="{% url 'account:login' %}" method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <p><input type="submit" value="Войти"></p>
+    </form>
+  </div>
+{% endblock %}
