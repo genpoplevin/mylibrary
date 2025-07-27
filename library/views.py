@@ -1,4 +1,6 @@
 from django.shortcuts import get_object_or_404, render
+
+from cart.forms import CartAddProductForm
 from .models import Book, Category
 
 
@@ -24,8 +26,12 @@ def book_detail(request, id, slug):
     book = get_object_or_404(
         Book, id=id, slug=slug, available=True
     )
+    cart_book_form = CartAddProductForm()
     return render(
         request,
         'library/book/book.html',
-        {'book': book},
+        {
+            'book': book,
+            'cart_book_form': cart_book_form
+        },
     )

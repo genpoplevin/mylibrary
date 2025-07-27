@@ -10,11 +10,16 @@
     {% static "img/no_image.png" %}{% endif %}">
     <h1>{{ book.name }}</h1>
     <h2>
-      <a href="{{ product.category.get_absolute_url }}">
+      <a href="{{ book.category.get_absolute_url }}">
         {{ book.category }}
       </a>
     </h2>
     <p class="price">${{ book.price }}</p>
+    <form action="{% url "cart:cart_add" book.id %}" method="post">
+      {{ cart_book_form }}
+      {% csrf_token %}
+      <input type="submit" value="Добавить в заказ">
+    </form>
     {{ book.description|linebreaks }}
   </div>
 {% endblock %}
