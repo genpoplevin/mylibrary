@@ -7,7 +7,7 @@
 </head>
 <body>
   <div id="header">
-    <span class="logo">Mylibrary</span>
+    <a href="/" class="logo">My library</a>
     {% if request.user.is_authenticated %}
       <ul class="menu">
         <li {% if section == "favorite" %}class="selected"{% endif %}>
@@ -23,13 +23,13 @@
     {% endif %}
     <span class="user">
       {% if request.user.is_authenticated %}
-        Hello {{ request.user.first_name|default:request.user.username }},
+        Здравствуйте, {{ request.user.first_name|default:request.user.username }},
         <form action="{% url "account:logout" %}" method="post">
-          <button type="submit">Logout</button>
+          <button type="submit">Выйти</button>
           {% csrf_token %}
         </form>
       {% else %}
-        <a href="{% url "account:login" %}">Log-in</a>
+        <a href="{% url "account:login" %}">Войти</a>
       {% endif %}
     </span>
   </div>
