@@ -26,6 +26,6 @@ def book_detail(request, id, slug):
     )
     return render(
         request,
-        'shop/product/detail.html',
+        'library/book/book.html',
         {'book': book},
     )
