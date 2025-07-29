@@ -26,6 +26,7 @@ class Book(models.Model):
         related_name='books',
         on_delete=models.CASCADE
     )
+    author = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
     image = models.ImageField(

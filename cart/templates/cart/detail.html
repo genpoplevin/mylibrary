@@ -58,6 +58,6 @@
   <p class="text-right">
     <a href="{% url "library:book_list" %}" class="button
     light">Продолжить просмотр книг</a>
-    <a href="#" class="button">Сделать заказ</a>
+    <a href="{% url "orders:order_create" %}" class="button">Сделать заказ</a>
   </p>
 {% endblock %}
