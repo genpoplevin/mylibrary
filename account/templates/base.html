@@ -22,6 +22,19 @@
       </ul>
     {% endif %}
     <span class="user">
+      {% with total_items=cart|length %}
+        {% if total_items > 0 %}
+          Книг в вашем заказе:
+          <a href="{% url "cart:cart_detail" %}">
+            {{ total_items }},
+            ${{ cart.get_total_price }}
+          </a>
+        {% else %}
+          Ваш заказ пуст
+        {% endif %}
+      {% endwith %}
+    </span>
+    <span class="user">
       {% if request.user.is_authenticated %}
         Здравствуйте, {{ request.user.first_name|default:request.user.username }},
         <form action="{% url "account:logout" %}" method="post">
