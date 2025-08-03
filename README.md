@@ -24,11 +24,13 @@ Mylibrary - это сервис, на котором пользователь м
 - /admin
 - /account
 - /account/register
-- /account/username
-- /catalog
-- /catalog/book_id
-- /catalog/book_id/purchase
-- /catalog/book_id/rent
+- /profile/username
+- /
+- /category_slug
+- /book_id/slug
+- /profile/book_id/follow
+- /profile/book_id/unfollow
+- /orders/create
 ---
 
 ## Установка и запуск //
