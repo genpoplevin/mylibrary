@@ -8,6 +8,7 @@
   <div class="product-detail">
     <img src="{% if book.image %}{{ book.image.url }}{% else %}
     {% static "img/no_image.png" %}{% endif %}">
+    <h2>{{ book.author }}</h2>
     <h1>{{ book.name }}</h1>
     <h2>
       <a href="{{ book.category.get_absolute_url }}">
@@ -20,6 +21,21 @@
       {% csrf_token %}
       <input type="submit" value="Добавить в заказ">
     </form>
+    {% if following %}
+      <a
+      class="btn btn-lg btn-light"
+      href="{% url 'library:book_unfollow' book.id %}" role="button"
+      >
+        Удалить из избранного
+      </a>
+    {% else %}
+      <a
+      class="btn btn-lg btn-light"
+      href="{% url 'library:book_follow' book.id %}" role="button"
+      >
+        Добавить в избранное
+      </a>
+    {% endif %}
     {{ book.description|linebreaks }}
   </div>
 {% endblock %}

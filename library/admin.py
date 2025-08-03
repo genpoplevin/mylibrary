@@ -10,8 +10,9 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = [
+        'author',
         'name',
-        'slug',
+        'year',
         'price',
         'available',
         'created',

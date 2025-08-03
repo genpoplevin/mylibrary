@@ -11,13 +11,10 @@
     {% if request.user.is_authenticated %}
       <ul class="menu">
         <li {% if section == "favorite" %}class="selected"{% endif %}>
-          <a href="{% url "account:favorite" %}">Избранное</a>
+          <a href="{% url "library:favorite" %}">Избранное</a>
         </li>
-        <li {% if section == "catalogue" %}class="selected"{% endif %}>
-          <a href="#">Каталог</a>
-        </li>
-        <li {% if section == "people" %}class="selected"{% endif %}>
-          <a href="#">People</a>
+        <li {% if section == "catalog" %}class="selected"{% endif %}>
+          <a href="/">Каталог</a>
         </li>
       </ul>
     {% endif %}

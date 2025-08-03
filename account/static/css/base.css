@@ -618,3 +618,20 @@ form div.field {
     color:#666;
     border-radius:4px;
 }
+
+.btn-light{
+    color:#000;
+    background-color:#f8f9fa;
+    border-color:#f8f9fa
+}
+
+.btn-primary{
+    color:#fff;
+    background-color:#0d6efd;
+    border-color:#0d6efd
+}
+
+.btn .badge{
+    position:relative;
+    top:-1px
+}
