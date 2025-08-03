@@ -43,7 +43,7 @@ cd mylibrary
 2. Создайте и активируйте виртуальное окружение:
 ```bash
 python -m venv venv
-source venv/bin/activate
+source venv/Scripts/activate
 ```
 3. Установите зависимости:
 ```bash
