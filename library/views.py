@@ -16,6 +16,24 @@ def book_list(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         books = books.filter(category=category)
+    category_id = request.GET.get('category')
+    author_id = request.GET.get('author')
+    year = request.GET.get('year')
+    sort = request.GET.get('sort')
+    if category_id:
+        books = books.filter(category_id=category_id)
+    if author_id:
+        books = books.filter(author_id=author_id)
+    if year:
+        year = books.filter(year=year)
+    if sort == 'title_asc':
+        books = books.order_by('title')
+    elif sort == 'title_desc':
+        books = books.order_by('-title')
+    elif sort == 'year_asc':
+        books = books.order_by('year')
+    elif sort == 'year_desc':
+        books = books.order_by('-year')
     return render(
         request,
         'library/book/list.html',
@@ -23,7 +41,11 @@ def book_list(request, category_slug=None):
             'category': category,
             'categories': categories,
             'books': books,
-            'section': 'catalog'
+            'section': 'catalog',
+            'selected_category': category_id,
+            'selected_author': author_id,
+            'selected_year': year,
+            'selected_sort': sort,
         },
     )
 
