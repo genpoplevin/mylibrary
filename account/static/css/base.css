@@ -80,7 +80,7 @@ ol {
     padding-top:4px;
 }
 
-#header .user form {
+#header .user .form {
     display:inline;
     float:right;
 }
@@ -634,4 +634,10 @@ form div.field {
 .btn .badge{
     position:relative;
     top:-1px
+}
+
+.sorting-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }

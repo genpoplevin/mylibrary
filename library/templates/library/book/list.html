@@ -21,21 +21,37 @@
   </div>
   <div id="main" class="product-list">
     <h1>{% if category %}{{ category.name }}{% else %}Книги{% endif %}</h1>
-    <form method="get">
-        <label>Категория:</label>
-        <select name="category">
-            <option value="Все"></option>
-            {% for cat in categories %}
-                <option value="{{ cat.name }}"></option>
+    <form method="get" class="sorting-form">
+        <label>Автор:</label>
+        <select name="author">
+            <option value="">Все</option>
+            {% for a in authors %}
+                <option value="{{ a }}" {% if request.GET.author == a|stringformat:"s" %}selected{% endif %}>
+                    {{ a }}
+                </option>
             {% endfor %}
         </select>
-        <label>Категория:</label>
-        <select name="category">
-            <option value="Все"></option>
-            {% for cat in categories %}
-                <option value="{{ cat.name }}"></option>
+
+        <label>Год:</label>
+        <select name="year">
+            <option value="">Все</option>
+            {% for y in years %}
+                <option value="{{ y }}" {% if request.GET.year == y|stringformat:"s" %}selected{% endif %}>
+                    {{ y }}
+                </option>
             {% endfor %}
         </select>
+
+        <label>Сортировать по:</label>
+        <select name="sort_by">
+            <option value="">Без сортировки</option>
+            <option value="name" {% if request.GET.sort_by == "title" %}selected{% endif %}>Название</option>
+            <option value="year" {% if request.GET.sort_by == "year" %}selected{% endif %}>Год</option>
+            <option value="author" {% if request.GET.sort_by == "authorname" %}selected{% endif %}>Автор</option>
+            <option value="category" {% if request.GET.sort_by == "category" %}selected{% endif %}>Категория</option>
+        </select>
+
+        <button type="submit">Применить</button>
     </form>
     {% for book in books %}
       <div class="item">
